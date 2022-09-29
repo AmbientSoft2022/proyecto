@@ -14,7 +14,7 @@
 	<name>AmbientSoft</name>
 	<description>Proyecto Empresa AmbientSoft</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -107,9 +107,7 @@
 				<executions>
 					<execution>
 					<goals>
-						<goal>
-							build-info
-						</goal>
+						<goal>build-info</goal>
 					</goals>
 						<configuration>
 							<additionalProperties>
