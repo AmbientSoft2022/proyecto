@@ -11,5 +11,4 @@ public class AmbientSoftApplication {
 		SpringApplication.run(AmbientSoftApplication.class, args);
 	}
 
-
 }
