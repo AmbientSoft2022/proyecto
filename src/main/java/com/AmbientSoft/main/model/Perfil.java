@@ -1,8 +1,6 @@
 package com.AmbientSoft.main.model;
 
 import lombok.*;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
@@ -31,7 +29,6 @@ public class Perfil {
     @Column(name="updatedAt")
     private LocalDateTime updatedAt;
 
-    @Nullable
     @OneToOne
     private Empleado empleado;
 

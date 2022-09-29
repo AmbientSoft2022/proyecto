@@ -42,12 +42,8 @@ public class GestorEmpresa {
     int cont_ET=0;
     int cont_ED=0;
     int cont_END=0;
-    int cont_EEMP=0;
-    int cont_EMOV=0;
-
     public Empresa actualizarEmpresa(Long nit, Empresa empresa){
         Empresa empresas = empresaRepositorio.findById(nit).get();
-
         if (cont_EN==0 || empresa.getNombreEmpresa()!=null){
             empresas.setNombreEmpresa(empresa.getNombreEmpresa());
          //   System.out.println("acceder"+cont);
@@ -79,20 +75,6 @@ public class GestorEmpresa {
             empresas.setDocumentoEmpresa(empresa.getDocumentoEmpresa());
             if (empresa.getDocumentoEmpresa()!=null){
                 cont_END=1;
-            }
-        }
-
-        if (cont_EEMP==0 || empresa.getEmpleados()!=null){
-            empresas.setEmpleados(empresa.getEmpleados());
-            if (empresa.getEmpleados()!=null){
-                cont_EEMP=1;
-            }
-        }
-
-        if (cont_EMOV==0 || empresa.getMovimientos()!=null){
-            empresas.setMovimientos(empresa.getMovimientos());
-            if (empresa.getMovimientos()!=null){
-                cont_EMOV=1;
             }
         }
 

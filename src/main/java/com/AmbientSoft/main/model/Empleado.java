@@ -2,7 +2,6 @@ package com.AmbientSoft.main.model;
 
 import com.AmbientSoft.main.Enums.Tipo;
 import lombok.*;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -35,7 +34,6 @@ public class Empleado {
 
     @OneToOne(mappedBy = "empleado")
     private Perfil perfil;
-    @Nullable
     @ManyToOne
     private Empresa empresa;
     @OneToMany(mappedBy = "empleado")
