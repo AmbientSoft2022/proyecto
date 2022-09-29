@@ -1,7 +1,9 @@
 package com.AmbientSoft.main.service;
 
+import com.AmbientSoft.main.model.Empleado;
 import com.AmbientSoft.main.model.Empresa;
 import com.AmbientSoft.main.model.MovimientoDinero;
+import com.AmbientSoft.main.repositorio.EmpleadoRepositorio;
 import com.AmbientSoft.main.repositorio.EmpresaRepositorio;
 import com.AmbientSoft.main.repositorio.MovimientoDineroRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class GestorMovimiento {
     MovimientoDineroRepositorio gestorMovimientoRepositorio;
     @Autowired
     EmpresaRepositorio empresaRepositorio;
+    @Autowired
+    EmpleadoRepositorio empleadoRepositorio;
     @Autowired
     GestorEmpresa gestorEmpresa;
     @Autowired
@@ -107,13 +111,24 @@ public class GestorMovimiento {
         gestorMovimientoRepositorio.save(MD);
         return MD;
     }
+
     public boolean saveOrUpdateMovimiento(MovimientoDinero movimiento){
-        MovimientoDinero emp=gestorMovimientoRepositorio.save(movimiento);
-        if (gestorMovimientoRepositorio.findById(movimiento.getId_MovimientoDinero())!=null){
+        Optional<Empresa> comprobante_Empresa= empresaRepositorio.findById(movimiento.getEmpresa().getNit_Empresa());
+        Optional<Empleado> comprobante_Empleado= empleadoRepositorio.findById(movimiento.getEmpleado().getId_empleado());
+        if ((comprobante_Empresa!=null && !comprobante_Empresa.isEmpty()) && (comprobante_Empleado!=null && !comprobante_Empleado.isEmpty())){
+            gestorMovimientoRepositorio.save(movimiento);
             return true;
         }
         return false;
     }
+
+//    public boolean saveOrUpdateMovimiento(MovimientoDinero movimiento){
+//        MovimientoDinero emp=gestorMovimientoRepositorio.save(movimiento);
+//        if (gestorMovimientoRepositorio.findById(movimiento.getId_MovimientoDinero())!=null){
+//            return true;
+//        }
+//        return false;
+//    }
 
     public MovimientoDinero getMovimientoById(Long id){
         return gestorMovimientoRepositorio.findById(id).get();
