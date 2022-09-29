@@ -4,28 +4,25 @@ import com.AmbientSoft.main.model.MovimientoDinero;
 import com.AmbientSoft.main.model.Usuarios;
 import com.AmbientSoft.main.service.GestorMovimiento;
 import com.AmbientSoft.main.service.GestorUsuario;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Controller
 public class FrontController {
-    @Autowired
-    GestorUsuario gestorUsuario;
+
     @Autowired
     GestorMovimiento gestorMovimiento;
+
+    @Autowired
+    GestorUsuario gestorUsuario;
 
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
@@ -36,18 +33,6 @@ public class FrontController {
         }
         return "index";
     }
-
-
-
-
-
-    @GetMapping("/tasks")
-    public String tasks(){
-        return "tasks";
-    }
-
-
-
 
     @GetMapping("/MovimientosDinero")
     public String movimientodinero(Model model){
@@ -62,6 +47,13 @@ public class FrontController {
         model.addAttribute("mensaje",mensaje);
         return "agregarMovimiento";
     }
+
+
+    @GetMapping("/tasks")
+    public String tasks(){
+        return "tasks";
+    }
+
 
     @PostMapping("/GuardarMovimiento")
     public String guardarMovimiento(MovimientoDinero emp, RedirectAttributes redirectAttributes){
@@ -89,7 +81,7 @@ public class FrontController {
             return "redirect:/MovimientosDinero";
         }
         redirectAttributes.addFlashAttribute("mensaje","updateError");
-        return "redirect://EditarMovimiento";
+        return "redirect:/EditarMovimiento";
 
     }
 
@@ -102,5 +94,4 @@ public class FrontController {
         redirectAttributes.addFlashAttribute("mensaje", "deleteError");
         return "redirect:/MovimientosDinero";
     }
-
 }

@@ -6,6 +6,7 @@ import com.AmbientSoft.main.repositorio.EmpresaRepositorio;
 import com.AmbientSoft.main.repositorio.MovimientoDineroRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,8 +43,12 @@ public class GestorEmpresa {
     int cont_ET=0;
     int cont_ED=0;
     int cont_END=0;
+    int cont_EEMP=0;
+    int cont_EMOV=0;
+
     public Empresa actualizarEmpresa(Long nit, Empresa empresa){
         Empresa empresas = empresaRepositorio.findById(nit).get();
+
         if (cont_EN==0 || empresa.getNombreEmpresa()!=null){
             empresas.setNombreEmpresa(empresa.getNombreEmpresa());
          //   System.out.println("acceder"+cont);
@@ -78,10 +83,45 @@ public class GestorEmpresa {
             }
         }
 
+        if (cont_EEMP==0 || empresa.getEmpleados()!=null){
+            empresas.setEmpleados(empresa.getEmpleados());
+            if (empresa.getEmpleados()!=null){
+                cont_EEMP=1;
+            }
+        }
+
+        if (cont_EMOV==0 || empresa.getMovimientos()!=null){
+            empresas.setMovimientos(empresa.getMovimientos());
+            if (empresa.getMovimientos()!=null){
+                cont_EMOV=1;
+            }
+        }
+
 
         empresas.setUpdatedAt(LocalDateTime.now());
         empresaRepositorio.save(empresas);
         return empresas;
+    }
+
+    public boolean saveOrUpdateEmpresa(Empresa empresa){
+        Empresa emp=empresaRepositorio.save(empresa);
+        if (empresaRepositorio.findById(empresa.getNit_Empresa())!=null){
+            return true;
+        }
+        return false;
+    }
+
+    public Empresa getEmpresaById(Long id){
+        return empresaRepositorio.findById(id).get();
+    }
+
+    public boolean deleteEmpresa(Long id){
+        empresaRepositorio.deleteById(id);  //Eliminar
+
+        if (empresaRepositorio.findById(id)!=null){  //Verificacion del servicio eliminacion
+            return true;
+        }
+        return false;
     }
 
 

@@ -2,8 +2,13 @@ package com.AmbientSoft.main.controlador;
 
 
 import com.AmbientSoft.main.model.MovimientoDinero;
+import com.AmbientSoft.main.model.Usuarios;
 import com.AmbientSoft.main.service.GestorMovimiento;
+import com.AmbientSoft.main.service.GestorUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
