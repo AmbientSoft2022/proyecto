@@ -15,11 +15,12 @@ public class GestorMovimiento {
 
     @Autowired
     MovimientoDineroRepositorio gestorMovimientoRepositorio;
-
     @Autowired
     EmpresaRepositorio empresaRepositorio;
     @Autowired
     GestorEmpresa gestorEmpresa;
+    @Autowired
+    GestorEmpleado gestorEmpleado;
 
     public List<MovimientoDinero> consultaListaMovimientoDinero() {
         return gestorMovimientoRepositorio.findAll();
