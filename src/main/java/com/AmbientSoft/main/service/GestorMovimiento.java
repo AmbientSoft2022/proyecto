@@ -150,6 +150,14 @@ public class GestorMovimiento {
         return false;
     }
 
+    public List<MovimientoDinero> getMovimientosEmpresa(String nit_Empresa){
+        return gestorMovimientoRepositorio.findByEmpresaNombreEmpresa(nit_Empresa);
+    }
+
+    public List<MovimientoDinero> getMovimientosEmpleado(String nit_Empleado){
+        return gestorMovimientoRepositorio.findByEmpleadoNombreEmpleado(nit_Empleado);
+    }
+
     public List<MovimientoDinero> eliminarMovimiento(Long id){
         gestorMovimientoRepositorio.deleteById(id);
         return gestorMovimientoRepositorio.findAll();

@@ -94,4 +94,18 @@ public class FrontController {
         redirectAttributes.addFlashAttribute("mensaje", "deleteError");
         return "redirect:/MovimientosDinero";
     }
+
+    @GetMapping("/MovimientosDinero/{nit_Empresa}/Empresa")
+    public String getMovimientosEmpresa(Model model, @PathVariable String nit_Empresa){
+        model.addAttribute("listamovimientosempresa",gestorMovimiento.getMovimientosEmpresa(nit_Empresa));
+        return "movimientosEmpresa";
+
+    }
+
+    @GetMapping("/MovimientosDinero/{nit_Empleado}/Empleado")
+    public String getMovimientosEmpleado(Model model, @PathVariable String nit_Empleado){
+        model.addAttribute("listamovimientosempresa",gestorMovimiento.getMovimientosEmpleado(nit_Empleado));
+        return "movimientosEmpresa";
+
+    }
 }

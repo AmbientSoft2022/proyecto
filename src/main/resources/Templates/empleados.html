@@ -64,6 +64,7 @@
                                 <th scope="col">Rol</th>
                                 <th scope="col">Nombre Empresa</th>
                                 <th scope="col">Movimientos</th>
+                                <th scope="col">Lista Movimientos</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
 
@@ -77,6 +78,8 @@
                                 <td th:text="${empleados.rol}"></td>
                                 <td th:text="${empleados.empresa.getNombreEmpresa()}"></td>
                                 <td th:text="${empleados.movimientos.size()}"></td>
+
+                                <td><button type="button" class="btn btn-info"><a th:href="@{/MovimientosDinero/{nit_Empleado}/Empleado(nit_Empleado=${empleados.nombreEmpleado})}">Movimientos</a></button></td>
 
                                 <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}(id=${empleados.id_empleado})}">Editar</a></button></td>
                                 <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleados.id_empleado})}">Eliminar</a></button></td>

@@ -70,4 +70,6 @@ public class FrontControllerEmpresa {
         redirectAttributes.addFlashAttribute("mensaje", "deleteError");
         return "redirect:/Empresas";
     }
+
+
 }

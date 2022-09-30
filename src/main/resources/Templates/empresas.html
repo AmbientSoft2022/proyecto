@@ -65,6 +65,8 @@
                 <th scope="col">Direccion</th>
                 <th scope="col">Empleados</th>
                 <th scope="col">Movimientos</th>
+                <th scope="col">Lista Empleados</th>
+                <th scope="col">lista Movimientos</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
 
@@ -79,6 +81,9 @@
                 <td th:text="${empresas.direccion}"></td>
                 <td th:text="${empresas.empleados.size()}"></td>
                 <td th:text="${empresas.movimientos.size()}"></td>
+
+                <td><button type="button" class="btn btn-info"><a th:href="@{/Empleados/{nit_Empresa}/Empresa(nit_Empresa=${empresas.nombreEmpresa})}">Empleados</a></button></td>
+                <td><button type="button" class="btn btn-info"><a th:href="@{/MovimientosDinero/{nit_Empresa}/Empresa(nit_Empresa=${empresas.nombreEmpresa})}">Movimientos</a></button></td>
 
                 <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresas.nit_Empresa})}">Editar</a></button></td>
                 <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresas.nit_Empresa})}">Eliminar</a></button></td>

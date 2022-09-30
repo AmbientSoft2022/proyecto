@@ -131,6 +131,10 @@ public class GestorEmpleado {
     }
 
 
+    public List<Empleado> getEmpleadoEmpresa(String nit_Empresa){
+        return empleadoRepositorio.findByEmpresaNombreEmpresa(nit_Empresa);
+    }
+
     public List<Empleado> eliminarEmpleado(Long id){
         empleadoRepositorio.deleteById(id);
         return empleadoRepositorio.findAll();

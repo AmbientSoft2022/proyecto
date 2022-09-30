@@ -71,5 +71,12 @@ public class FrontControllerEmpleado {
         return "redirect:/Empleados";
     }
 
+    @GetMapping("/Empleados/{nit_Empresa}/Empresa")
+    public String getEmpleadosEmpresa(Model model, @PathVariable String nit_Empresa){
+        model.addAttribute("listaempleadosempresa",gestorEmpleado.getEmpleadoEmpresa(nit_Empresa));
+        return "empleadosEmpresa";
+
+    }
+
 
 }
