@@ -24,17 +24,17 @@ public class FrontController {
     @Autowired
     GestorUsuario gestorUsuario;
 
-    @GetMapping("/")
-    public String index(Model model, @AuthenticationPrincipal OidcUser principal){
-        if (principal != null) {
-            Usuarios Usuario = this.gestorUsuario.obtenerOcrearUsuario(principal.getClaims());
-            model.addAttribute("Usuario",Usuario);
-            System.out.println(principal.getClaims());
-        }
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String index(Model model, @AuthenticationPrincipal OidcUser principal){
+//        if (principal != null) {
+//            Usuarios Usuario = this.gestorUsuario.obtenerOcrearUsuario(principal.getClaims());
+//            model.addAttribute("Usuario",Usuario);
+//            System.out.println(principal.getClaims());
+//        }
+//        return "index";
+//    }
 
-    @GetMapping("/MovimientasDinero")
+    @GetMapping("/MovimientosDinero")
     public String movimientodinero(Model model){
         model.addAttribute("listamovimientos",gestorMovimiento.consultaListaMovimientoDinero());
         return "movimientodinero";
