@@ -14,7 +14,7 @@ public class MovimientoController {
     @Autowired
     GestorMovimiento gestorMovimiento;
 
-    @GetMapping("/MovimientoDinero")
+    @GetMapping("/MovimientDinero")
     public List<MovimientoDinero> MD(){
         return gestorMovimiento.consultaListaMovimientoDinero();
     }
