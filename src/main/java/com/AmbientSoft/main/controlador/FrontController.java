@@ -34,7 +34,7 @@ public class FrontController {
         return "index";
     }
 
-    @GetMapping("/MovimientosDinero")
+    @GetMapping("MovimientosDinero")
     public String movimientodinero(Model model){
         model.addAttribute("listamovimientos",gestorMovimiento.consultaListaMovimientoDinero());
         return "movimientodinero";
