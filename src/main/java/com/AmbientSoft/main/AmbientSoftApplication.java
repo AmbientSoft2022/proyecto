@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.AmbientSoft.main.controlador"})
+@ComponentScan(basePackages = {"com.AmbientSoft.main"})
 public class AmbientSoftApplication {
 
 	public static void main(String[] args) {
